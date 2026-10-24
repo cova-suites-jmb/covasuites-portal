@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cova Suites Condominium - Community Portal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            500: '#334e68',
+                            700: '#102a43',
+                            800: '#0b1b2b',
+                            accent: '#00a896'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Top Emergency Bar -->
+    <div class="bg-red-700 text-white text-xs py-1.5 px-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-triangle-exclamation animate-pulse text-amber-300"></i>
+                <span class="font-medium">Emergency Line (24/7 Guardhouse): <a href="tel:+60361481234" class="underline font-bold">+60 3-6148 1234</a></span>
+            </div>
+            <div class="hidden sm:flex items-center space-x-4">
+                <span>Kota Damansara, Petaling Jaya</span>
+                <span>•</span>
+                <span>Management Office Hours: 9:00 AM - 5:00 PM (Mon-Fri)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Branding -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-brand-700 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md">
+                        CS
+                    </div>
+                    <div>
+                        <a href="#" class="text-xl font-bold text-brand-700 tracking-tight block">COVA SUITES</a>
+                        <span class="text-xs text-slate-500 font-medium tracking-wide uppercase">Resident Portal • Kota Damansara</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                    <a href="#about" class="hover:text-brand-700 transition-colors">About</a>
+                    <a href="#notices" class="hover:text-brand-700 transition-colors">Notices</a>
+                    <a href="#facilities" class="hover:text-brand-700 transition-colors">Facilities</a>
+                    <a href="#documents" class="hover:text-brand-700 transition-colors">Forms & Docs</a>
+                    <a href="#contacts" class="hover:text-brand-700 transition-colors">Contact Us</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center">
+                    <button onclick="openModal('reportModal')" class="bg-brand-700 hover:bg-brand-800 text-white px-4 py-2.5 rounded-lg text-sm font-medium shadow-sm hover:shadow transition-all flex items-center space-x-2">
+                        <i class="fa-solid fa-headset text-brand-accent"></i>
+                        <span>Report Issue</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="text-slate-600 p-2 rounded-lg hover:bg-slate-100">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-100 bg-white px-4 pt-2 pb-4 space-y-2">
+            <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50">About</a>
+            <a href="#notices" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50">Notices</a>
+            <a href="#facilities" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50">Facilities</a>
+            <a href="#documents" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50">Forms & Docs</a>
+            <a href="#contacts" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50">Contact Us</a>
+            <button onclick="openModal('reportModal')" class="w-full text-left bg-brand-700 text-white px-4 py-2.5 rounded-lg text-sm font-medium mt-2">
+                <i class="fa-solid fa-headset mr-2"></i> Report Issue
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+
+        <!-- Hero Section -->
+        <section class="relative bg-gradient-to-r from-brand-800 via-brand-700 to-slate-900 text-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            
+            <div class="max-w-7xl mx-auto relative z-10">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="inline-block px-3 py-1 bg-brand-accent/20 text-teal-200 rounded-full text-xs font-semibold tracking-wider uppercase mb-4 border border-teal-500/30">
+                            Official Community Platform
+                        </span>
+                        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight mb-6">
+                            Welcome to Cova Suites Resident Portal
+                        </h1>
+                        <p class="text-slate-300 text-lg mb-8 leading-relaxed">
+                            Stay updated with official building announcements, download management forms, check facility operating hours, and submit feedback directly to your Management Committee.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#notices" class="bg-brand-accent hover:bg-teal-600 text-white font-medium px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all flex items-center space-x-2">
+                                <i class="fa-regular fa-bell"></i>
+                                <span>View Notices</span>
+                            </a>
+                            <a href="#documents" class="bg-white/10 hover:bg-white/20 text-white font-medium px-6 py-3 rounded-lg border border-white/20 backdrop-blur-sm transition-all flex items-center space-x-2">
+                                <i class="fa-solid fa-file-arrow-down"></i>
+                                <span>Download Forms</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Info Card -->
+                    <div class="glass-card rounded-2xl p-6 sm:p-8 text-slate-800 shadow-2xl border border-white/40">
+                        <h3 class="text-xl font-bold text-brand-700 mb-4 flex items-center border-b pb-3 border-slate-200">
+                            <i class="fa-solid fa-bullhorn text-brand-accent mr-3"></i> Quick Announcements
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div class="p-3 bg-amber-50 rounded-lg border border-amber-200 flex items-start space-x-3">
+                                <i class="fa-solid fa-circle-exclamation text-amber-600 mt-1"></i>
+                                <div>
+                                    <p class="font-semibold text-xs text-amber-900 uppercase">Pool Maintenance</p>
+                                    <p class="text-sm text-slate-700">Swimming pool closed for servicing on Tuesday, 9 AM - 2 PM.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-3 bg-blue-50 rounded-lg border border-blue-200 flex items-start space-x-3">
+                                <i class="fa-solid fa-calendar-check text-blue-600 mt-1"></i>
+                                <div>
+                                    <p class="font-semibold text-xs text-blue-900 uppercase">Upcoming 14th AGM</p>
+                                    <p class="text-sm text-slate-700">Annual General Meeting scheduled for 15th Nov 2026. Notice dispatched.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
+                            <span><i class="fa-solid fa-building mr-1"></i> JMB Management Office</span>
+                            <a href="#notices" class="text-brand-700 font-semibold hover:underline">All notices &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 bg-white border-b border-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-3xl font-bold text-brand-700 mb-3">About Cova Suites</h2>
+                    <p class="text-slate-600">A vibrant high-rise residential community in Jalan PJU 5/1, Kota Damansara, featuring 3 towers with modern amenities and 24-hour security.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="p-6 bg-slate-50 rounded-xl border border-slate-200/80 text-center hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-brand-50 text-brand-700 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2 text-slate-800">24/7 Security</h3>
+                        <p class="text-sm text-slate-600">Multi-tier card access control at guardhouse, lift lobbies, and round-the-clock patrol team.</p>
+                    </div>
+
+                    <div class="p-6 bg-slate-50 rounded-xl border border-slate-200/80 text-center hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-brand-50 text-brand-700 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
+                            <i class="fa-solid fa-square-parking"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2 text-slate-800">Visitor Parking</h3>
+                        <p class="text-sm text-slate-600">Registered visitor bay allocations available. All visitors must register at the main guardhouse.</p>
+                    </div>
+
+                    <div class="p-6 bg-slate-50 rounded-xl border border-slate-200/80 text-center hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-brand-50 text-brand-700 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
+                            <i class="fa-solid fa-dumpster"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2 text-slate-800">Waste Management</h3>
+                        <p class="text-sm text-slate-600">Refuse chambers on each floor. Bulk waste disposal requires booking with management.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notices Board Section -->
+        <section id="notices" class="py-16 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-wider text-brand-accent">Official Updates</span>
+                        <h2 class="text-3xl font-bold text-brand-700">Notice Board</h2>
+                    </div>
+                    <p class="text-sm text-slate-500 mt-2 md:mt-0">Updated regularly by the Management Office</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Notice Card 1 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+                        <div class="p-6 flex-grow">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="px-2.5 py-1 bg-red-100 text-red-700 rounded-md text-xs font-semibold">Important</span>
+                                <span class="text-xs text-slate-400">Oct 20, 2026</span>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-800 mb-2">14th Annual General Meeting (AGM) Notice</h3>
+                            <p class="text-sm text-slate-600 line-clamp-3 mb-4">
+                                Official notice is hereby given that the 14th AGM of Cova Suites Management Corporation will be held at the Multipurpose Hall, Block A.
+                            </p>
+                        </div>
+                        <div class="px-6 py-3 bg-slate-50 border-t border-slate-100 flex justify-between items-center text-xs">
+                            <span class="text-slate-500">Issued by: JMB</span>
+                            <button onclick="openNoticeModal('14th AGM Notice', 'Official notice is hereby given that the 14th AGM of Cova Suites Management Corporation will be held at the Multipurpose Hall, Block A on 15th November 2026 at 10:00 AM. Nominations for committee positions must be submitted 48 hours prior.')" class="text-brand-700 font-semibold hover:underline">Read Full Notice</button>
+                        </div>
+                    </div>
+
+                    <!-- Notice Card 2 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+                        <div class="p-6 flex-grow">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="px-2.5 py-1 bg-amber-100 text-amber-800 rounded-md text-xs font-semibold">Maintenance</span>
+                                <span class="text-xs text-slate-400">Oct 18, 2026</span>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-800 mb-2">Routine Water Tank Servicing</h3>
+                            <p class="text-sm text-slate-600 line-clamp-3 mb-4">
+                                Scheduled cleaning of suction and main water storage tanks. Water pressure may experience temporary disruption during servicing hours.
+                            </p>
+                        </div>
+                        <div class="px-6 py-3 bg-slate-50 border-t border-slate-100 flex justify-between items-center text-xs">
+                            <span class="text-slate-500">Issued by: Operations</span>
+                            <button onclick="openNoticeModal('Routine Water Tank Servicing', 'Scheduled cleaning of suction and main water storage tanks will take place this Thursday from 9:00 AM to 4:00 PM. Residents are advised to store sufficient water for basic consumption.')" class="text-brand-700 font-semibold hover:underline">Read Full Notice</button>
+                        </div>
+                    </div>
+
+                    <!-- Notice Card 3 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+                        <div class="p-6 flex-grow">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="px-2.5 py-1 bg-blue-100 text-blue-700 rounded-md text-xs font-semibold">Security</span>
+                                <span class="text-xs text-slate-400">Oct 10, 2026</span>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-800 mb-2">New Access Card Registration System</h3>
+                            <p class="text-sm text-slate-600 line-clamp-3 mb-4">
+                                All residents are requested to update their registered vehicle access cards at the Management Office before the end of the month.
+                            </p>
+                        </div>
+                        <div class="px-6 py-3 bg-slate-50 border-t border-slate-100 flex justify-between items-center text-xs">
+                            <span class="text-slate-500">Issued by: Security</span>
+                            <button onclick="openNoticeModal('New Access Card System', 'All residents are requested to update their registered vehicle access cards at the Management Office. Please bring your tenancy agreement or strata title copy alongside your NRIC/Passport for verification.')" class="text-brand-700 font-semibold hover:underline">Read Full Notice</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Facilities Section -->
+        <section id="facilities" class="py-16 bg-white border-b border-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-brand-accent">Amenities</span>
+                    <h2 class="text-3xl font-bold text-brand-700">Facilities & Guidelines</h2>
+                    <p class="text-slate-600 mt-2 text-sm">Review operational hours and rules for common facilities.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Gym -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden hover:shadow-md transition-all">
+                        <div class="bg-brand-700 text-white p-6 text-center">
+                            <i class="fa-solid fa-dumbbell text-3xl mb-2 text-teal-300"></i>
+                            <h3 class="font-bold text-xl">Gymnasium</h3>
+                            <span class="text-xs text-teal-100">Level 5, Main Block</span>
+                        </div>
+                        <div class="p-5 text-xs text-slate-600 space-y-2">
+                            <p class="flex justify-between"><strong>Hours:</strong> <span>6:00 AM - 10:00 PM</span></p>
+                            <p class="flex justify-between"><strong>Access:</strong> <span>Access Card</span></p>
+                            <p class="text-slate-500 pt-2 border-t border-slate-100">Proper sportswear & clean shoes required at all times.</p>
+                        </div>
+                    </div>
+
+                    <!-- Swimming Pool -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden hover:shadow-md transition-all">
+                        <div class="bg-brand-700 text-white p-6 text-center">
+                            <i class="fa-solid fa-person-swimming text-3xl mb-2 text-teal-300"></i>
+                            <h3 class="font-bold text-xl">Swimming Pool</h3>
+                            <span class="text-xs text-teal-100">Level 5, Podium</span>
+                        </div>
+                        <div class="p-5 text-xs text-slate-600 space-y-2">
+                            <p class="flex justify-between"><strong>Hours:</strong> <span>7:00 AM - 9:00 PM</span></p>
+                            <p class="flex justify-between"><strong>Attire:</strong> <span>Swimwear Only</span></p>
+                            <p class="text-slate-500 pt-2 border-t border-slate-100">Children under 12 must be supervised by an adult.</p>
+                        </div>
+                    </div>
+
+                    <!-- Multipurpose Hall -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden hover:shadow-md transition-all">
+                        <div class="bg-brand-700 text-white p-6 text-center">
+                            <i class="fa-solid fa-people-roof text-3xl mb-2 text-teal-300"></i>
+                            <h3 class="font-bold text-xl">Multipurpose Hall</h3>
+                            <span class="text-xs text-teal-100">Ground Floor</span>
+                        </div>
+                        <div class="p-5 text-xs text-slate-600 space-y-2">
+                            <p class="flex justify-between"><strong>Booking:</strong> <span>Advance Required</span></p>
+                            <p class="flex justify-between"><strong>Deposit:</strong> <span>RM 200 (Refundable)</span></p>
+                            <p class="text-slate-500 pt-2 border-t border-slate-100">Subject to management approval & availability.</p>
+                        </div>
+                    </div>
+
+                    <!-- BBQ Area -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden hover:shadow-md transition-all">
+                        <div class="bg-brand-700 text-white p-6 text-center">
+                            <i class="fa-solid fa-fire-burner text-3xl mb-2 text-teal-300"></i>
+                            <h3 class="font-bold text-xl">BBQ Pit Area</h3>
+                            <span class="text-xs text-teal-100">Level 5, Garden Zone</span>
+                        </div>
+                        <div class="p-5 text-xs text-slate-600 space-y-2">
+                            <p class="flex justify-between"><strong>Slots:</strong> <span>5:00 PM - 10:00 PM</span></p>
+                            <p class="flex justify-between"><strong>Fee:</strong> <span>RM 50 / session</span></p>
+                            <p class="text-slate-500 pt-2 border-t border-slate-100">Cleanliness deposit applies. Book 3 days prior.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resident Downloads & Forms Section -->
+        <section id="documents" class="py-16 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto">
+                    <div class="text-center mb-10">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-brand-accent">Self Service</span>
+                        <h2 class="text-3xl font-bold text-brand-700">Resident Forms & Downloads</h2>
+                        <p class="text-slate-600 mt-2 text-sm">Download official management PDF forms before visiting the office.</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 divide-y divide-slate-100">
+                        <!-- Item 1 -->
+                        <div class="p-4 sm:p-5 flex items-center justify-between hover:bg-slate-50 transition-colors">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-red-50 text-red-600 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-file-pdf text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-800 text-sm">Renovation Application & Guidelines</h4>
+                                    <p class="text-xs text-slate-500">PDF • 245 KB • Required for wet/dry interior works</p>
+                                </div>
+                            </div>
+                            <button onclick="alert('Demo Mode: File download triggered for Renovation Application')" class="bg-slate-100 hover:bg-brand-700 hover:text-white text-slate-700 p-2.5 rounded-lg text-xs font-medium transition-colors">
+                                <i class="fa-solid fa-download"></i>
+                            </button>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="p-4 sm:p-5 flex items-center justify-between hover:bg-slate-50 transition-colors">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-red-50 text-red-600 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-file-pdf text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-800 text-sm">Vehicle Access Card Application Form</h4>
+                                    <p class="text-xs text-slate-500">PDF • 180 KB • Resident RFID / Transponder application</p>
+                                </div>
+                            </div>
+                            <button onclick="alert('Demo Mode: File download triggered for Access Card Form')" class="bg-slate-100 hover:bg-brand-700 hover:text-white text-slate-700 p-2.5 rounded-lg text-xs font-medium transition-colors">
+                                <i class="fa-solid fa-download"></i>
+                            </button>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="p-4 sm:p-5 flex items-center justify-between hover:bg-slate-50 transition-colors">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-red-50 text-red-600 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-file-pdf text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-800 text-sm">Move-In / Move-Out Permit Form</h4>
+                                    <p class="text-xs text-slate-500">PDF • 150 KB • Required 3 days prior to mover lorry entry</p>
+                                </div>
+                            </div>
+                            <button onclick="alert('Demo Mode: File download triggered for Move-In Form')" class="bg-slate-100 hover:bg-brand-700 hover:text-white text-slate-700 p-2.5 rounded-lg text-xs font-medium transition-colors">
+                                <i class="fa-solid fa-download"></i>
+                            </button>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="p-4 sm:p-5 flex items-center justify-between hover:bg-slate-50 transition-colors">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-red-50 text-red-600 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-file-pdf text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-800 text-sm">Strata House Rules & By-Laws Handbook</h4>
+                                    <p class="text-xs text-slate-500">PDF • 1.2 MB • Full official building regulations</p>
+                                </div>
+                            </div>
+                            <button onclick="alert('Demo Mode: File download triggered for Strata Rules')" class="bg-slate-100 hover:bg-brand-700 hover:text-white text-slate-700 p-2.5 rounded-lg text-xs font-medium transition-colors">
+                                <i class="fa-solid fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Management & Contacts Section -->
+        <section id="contacts" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Office Info -->
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-wider text-brand-accent">Get In Touch</span>
+                        <h2 class="text-3xl font-bold text-brand-700 mb-6">Management Office</h2>
+
+                        <div class="space-y-6 text-slate-600 text-sm">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-brand-50 text-brand-700 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <strong class="block text-slate-800 font-semibold mb-1">Location Address</strong>
+                                    <p>Management Office, Level 1, Block A, Cova Suites,<br>Jalan PJU 5/1, Kota Damansara, 47810 Petaling Jaya, Selangor.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-brand-50 text-brand-700 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <div>
+                                    <strong class="block text-slate-800 font-semibold mb-1">Operating Hours</strong>
+                                    <p>Monday – Friday: 9:00 AM – 5:00 PM</p>
+                                    <p>Saturday: 9:00 AM – 1:00 PM</p>
+                                    <p>Sunday & Public Holidays: Closed</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-brand-50 text-brand-700 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <strong class="block text-slate-800 font-semibold mb-1">Contact Lines</strong>
+                                    <p>Office Phone: +60 3-6148 5678</p>
+                                    <p>Guardhouse (24/7): +60 3-6148 1234</p>
+                                    <p>Email: covasuites.management@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct Feedback Form -->
+                    <div class="bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200">
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Send Message to Management</h3>
+                        <p class="text-xs text-slate-500 mb-6">For general inquiries, maintenance reports, or committee feedback.</p>
+
+                        <form onsubmit="event.preventDefault(); alert('Message submitted successfully! Management will respond within 2 working days.');" class="space-y-4 text-xs">
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block font-medium text-slate-700 mb-1">Unit Number *</label>
+                                    <input type="text" placeholder="e.g. A-12-03" required class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-700 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block font-medium text-slate-700 mb-1">Full Name *</label>
+                                    <input type="text" placeholder="Your Name" required class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-700 outline-none">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block font-medium text-slate-700 mb-1">Email Address *</label>
+                                <input type="email" placeholder="name@email.com" required class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-700 outline-none">
+                            </div>
+
+                            <div>
+                                <label class="block font-medium text-slate-700 mb-1">Subject</label>
+                                <select class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-700 outline-none">
+                                    <option>General Inquiry</option>
+                                    <option>Maintenance Request</option>
+                                    <option>Access Card / Parking</option>
+                                    <option>Committee Feedback</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block font-medium text-slate-700 mb-1">Message *</label>
+                                <textarea rows="4" placeholder="Describe your inquiry or concern..." required class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-700 outline-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-brand-700 hover:bg-brand-800 text-white font-medium py-3 rounded-lg shadow-sm text-sm transition-all">
+                                Submit Inquiry
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-800 text-slate-300 text-xs py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="text-white font-semibold text-sm mb-3">COVA SUITES</h4>
+                    <p class="text-slate-400 leading-relaxed">Official resident community informational portal for Cova Suites Condominium Kota Damansara.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold text-sm mb-3">Emergency Contacts</h4>
+                    <ul class="space-y-1.5 text-slate-400">
+                        <li>Police (Kota Damansara): 999 / 03-6142 1222</li>
+                        <li>Bomba (Bomba KD): 999 / 03-6157 1210</li>
+                        <li>TNB Hotline: 15454</li>
+                        <li>Air Selangor: 15300</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold text-sm mb-3">Quick Links</h4>
+                    <ul class="space-y-1.5 text-slate-400">
+                        <li><a href="#about" class="hover:underline">About Cova Suites</a></li>
+                        <li><a href="#notices" class="hover:underline">Building Notices</a></li>
+                        <li><a href="#facilities" class="hover:underline">Facility Operating Hours</a></li>
+                        <li><a href="#documents" class="hover:underline">Download Forms</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold text-sm mb-3">Disclaimer</h4>
+                    <p class="text-slate-400 leading-relaxed">This site serves for general resident information. For urgent security or facility matters, contact the guardhouse or management office directly.</p>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-700/60 flex flex-col sm:flex-row justify-between items-center text-slate-400">
+                <p>&copy; 2026 Cova Suites Management Corporation / JMB. All rights reserved.</p>
+                <p class="mt-2 sm:mt-0">Designed for Cova Suites Residents</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Notice Modal -->
+    <div id="noticeModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
+            <button onclick="closeModal('noticeModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <span class="text-xs font-bold text-brand-accent uppercase">Notice Detail</span>
+            <h3 id="modalTitle" class="text-xl font-bold text-slate-800 my-2"></h3>
+            <p id="modalBody" class="text-sm text-slate-600 leading-relaxed my-4"></p>
+            <button onclick="closeModal('noticeModal')" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-medium py-2 rounded-lg text-sm">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Report Modal -->
+    <div id="reportModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative">
+            <button onclick="closeModal('reportModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <h3 class="text-xl font-bold text-slate-800 mb-1">Quick Maintenance Report</h3>
+            <p class="text-xs text-slate-500 mb-4">Report common area issues (light bulb blown, water leak, lift noise, etc.)</p>
+            
+            <form onsubmit="event.preventDefault(); alert('Report logged. Maintenance team notified.'); closeModal('reportModal');" class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-medium text-slate-700 mb-1">Location of Issue</label>
+                    <input type="text" placeholder="e.g. Block B, Level 8 Lift Lobby" required class="w-full px-3 py-2 rounded-lg border border-slate-300 outline-none">
+                </div>
+                <div>
+                    <label class="block font-medium text-slate-700 mb-1">Issue Description</label>
+                    <textarea rows="3" placeholder="Briefly describe what needs fixing..." required class="w-full px-3 py-2 rounded-lg border border-slate-300 outline-none"></textarea>
+                </div>
+                <div>
+                    <label class="block font-medium text-slate-700 mb-1">Your Unit No. & Phone No.</label>
+                    <input type="text" placeholder="e.g. B-08-02 (012-3456789)" required class="w-full px-3 py-2 rounded-lg border border-slate-300 outline-none">
+                </div>
+                <button type="submit" class="w-full bg-brand-700 hover:bg-brand-800 text-white font-medium py-2.5 rounded-lg text-sm transition-all mt-2">
+                    Submit Report
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Modal Helpers
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+        function openNoticeModal(title, body) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalBody').innerText = body;
+            openModal('noticeModal');
+        }
+    </script>
+</body>
+</html>
